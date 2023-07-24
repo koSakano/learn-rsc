@@ -1,10 +1,7 @@
-export function BlogPostPage({ postSlug, postContent }) {
+import { Post } from './Post.js';
+
+export function BlogPostPage({ postSlug }) {
   return (
-    <section>
-      <h2>
-        <a href={"/" + postSlug}>{postSlug}</a>
-      </h2>
-      <article>{postContent}</article>
-    </section>
+    <Post postSlug={postSlug} />
   );
 }

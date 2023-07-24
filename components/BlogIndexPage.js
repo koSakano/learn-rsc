@@ -1,15 +1,15 @@
-export function BlogIndexPage({ postSlugs, postContents }) {
+import { readdir } from 'fs/promises';
+import { Post } from './Post.js';
+
+export async function BlogIndexPage() {
+  const postFiles = await readdir("./posts");
+  const postSlugs = postFiles.map((file) => file.slice(0, file.lastIndexOf(".")));
   return (
     <section>
       <h1>Welcome to my blog</h1>
       <div>
-        {postSlugs.map((postSlug, index) => (
-          <section key={postSlug}>
-            <h2>
-              <a href={"/" + postSlug}>{postSlug}</a>
-            </h2>
-            <article>{postContents[index]}</article>
-          </section>
+        {postSlugs.map((postSlug) => (
+          <Post key={postSlug} postSlug={postSlug} />
         ))}
       </div>
     </section>
