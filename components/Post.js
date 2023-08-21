@@ -1,5 +1,5 @@
 import { readFile } from "fs/promises";
-import { throwNotFound } from "../server.js";
+import { throwNotFound } from "../server/rsc.js";
 
 export async function Post({ postSlug }) {
     let content;
